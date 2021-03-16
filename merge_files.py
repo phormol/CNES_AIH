@@ -1,0 +1,14 @@
+import glob
+import os
+import glob
+import pandas as pd
+
+os.chdir("D:\\python\\aih\\data\\")
+
+extension = 'csv'
+all_filenames = [i for i in glob.glob('*.{}'.format(extension))]
+
+#combine all files in the list
+combined_csv = pd.concat([pd.read_csv(f, encoding="UTF-8") for f in all_filenames ])
+#export to csv
+combined_csv.to_csv( "AIH-BA-20201026.csv", index=False, encoding='utf-8-sig')
